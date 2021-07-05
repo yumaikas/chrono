@@ -4,8 +4,6 @@
 #define JDOC(x) x
 using namespace date;
 
-
-
 struct chrono_ymd {
     int32_t y;
     int32_t m;
@@ -28,7 +26,8 @@ int32_t janet_int_field(JanetDictView dict, const char *key) {
 chrono_ymd date_from_dict(JanetDictView date) {
     chrono_ymd ymd;
     ymd.y = janet_int_field(date, "year");
-    ymd.m = janet_int_field(date, "month");
+    // TODO: +/- 1 here?
+    ymd.m = janet_int_field(date, "month") + 1;
     ymd.d = janet_int_field(date, "month-day");
     return ymd;
 }
@@ -36,7 +35,8 @@ chrono_ymd date_from_dict(JanetDictView date) {
 chrono_ym ym_from_dict(JanetDictView date) {
     chrono_ym ymd;
     ymd.y = janet_int_field(date, "year");
-    ymd.m = janet_int_field(date, "month");
+    // TODO: +/- 1 here?
+    ymd.m = janet_int_field(date, "month") + 1;
     return ymd;
 }
 
@@ -54,7 +54,7 @@ static Janet j_add_days(int32_t argc, Janet *argv) {
     
     JanetKV *dt = janet_struct_begin(3);
     janet_struct_put(dt, janet_ckeywordv("year"), janet_wrap_number((int32_t)(int)new_date.year()));
-    janet_struct_put(dt, janet_ckeywordv("month"), janet_wrap_number((int32_t)(unsigned)new_date.month()));
+    janet_struct_put(dt, janet_ckeywordv("month"), janet_wrap_number((int32_t)(unsigned)new_date.month() - 1));
     janet_struct_put(dt, janet_ckeywordv("month-day"), janet_wrap_number((int32_t)(unsigned)new_date.day()));
     return janet_wrap_struct(janet_struct_end(dt));
 }
@@ -73,7 +73,7 @@ static Janet j_add_months(int32_t argc, Janet *argv) {
 
     JanetKV *dt = janet_struct_begin(3);
     janet_struct_put(dt, janet_ckeywordv("year"), janet_wrap_number((int32_t)(int)new_date.year()));
-    janet_struct_put(dt, janet_ckeywordv("month"), janet_wrap_number((int32_t)(unsigned)new_date.month()));
+    janet_struct_put(dt, janet_ckeywordv("month"), janet_wrap_number((int32_t)(unsigned)new_date.month() - 1));
     janet_struct_put(dt, janet_ckeywordv("month-day"), janet_wrap_number((int32_t)(unsigned)new_date.day()));
     return janet_wrap_struct(janet_struct_end(dt));
 }
@@ -92,7 +92,7 @@ static Janet j_add_years(int32_t argc, Janet *argv) {
 
     JanetKV *dt = janet_struct_begin(3);
     janet_struct_put(dt, janet_ckeywordv("year"), janet_wrap_number((int32_t)(int)new_date.year()));
-    janet_struct_put(dt, janet_ckeywordv("month"), janet_wrap_number((int32_t)(unsigned)new_date.month()));
+    janet_struct_put(dt, janet_ckeywordv("month"), janet_wrap_number((int32_t)(unsigned)new_date.month() - 1));
     janet_struct_put(dt, janet_ckeywordv("month-day"), janet_wrap_number((int32_t)(unsigned)new_date.day()));
     return janet_wrap_struct(janet_struct_end(dt));
 }
@@ -118,7 +118,7 @@ static Janet j_nth_weekday_of_month(int32_t argc, Janet *argv) {
 
     JanetKV *dt = janet_struct_begin(3);
     janet_struct_put(dt, janet_ckeywordv("year"), janet_wrap_number((int32_t)(int)curr_date.year()));
-    janet_struct_put(dt, janet_ckeywordv("month"), janet_wrap_number((int32_t)(unsigned)curr_date.month()));
+    janet_struct_put(dt, janet_ckeywordv("month"), janet_wrap_number((int32_t)(unsigned)curr_date.month() - 1));
     janet_struct_put(dt, janet_ckeywordv("month-day"), janet_wrap_number((int32_t)(unsigned)curr_date.day()));
     return janet_wrap_struct(janet_struct_end(dt));
 }

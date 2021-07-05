@@ -6,7 +6,8 @@
 
 
 (phony "docs" ["build"] 
-       (def out @"")
+       (def out @"# Chrono: date math for janet")
+       (buffer/push out "\n\n")
        (each kv (filter |(= (type ($ 0)) :symbol) (pairs (require "./build/chrono")))
          (pp (type (kv 0)))
          (pp (kv 0))
