@@ -129,33 +129,33 @@ static const JanetReg cfuns[] = {
             "\n" 
             "Add a number of days to a given date, returning a year/month/day struct.\n"
             "\n"
-            "date: A dictionary that contains at least a year, month and month-day field. An os/date can be used.\n"
-            "days-to-add: An integer number of days to add\n"
+            "date: A dictionary that contains at least a year, month and month-day field. An os/date can be used.  \n"
+            "days-to-add: An integer number of days to add.  \n"
             )},
     {"add-months", j_add_months, JDOC(
             "`(add-months date months-to-add)`\n"
             "\n" 
             "Add a number of months to a given date, returning a year/month/day struct.\n"
             "\n"
-            "date: A dictionary that contains at least a year, month and month-day field. An os/date can be used.\n"
-            "months-to-add: An integer number of months to add\n"
+            "date: A dictionary that contains at least a year, month and month-day field. An os/date can be used.  \n"
+            "months-to-add: An integer number of months to add.  \n"
             )},
     {"add-years", j_add_years, JDOC(
             "`(add-years date years-to-add)`\n"
             "\n" 
             "Add a number of months to a given date, returning a year/month/day struct.\n"
             "\n"
-            "date: A dictionary that contains at least a year, month and month-day field. An os/date can be used.\n"
-            "years-to-add: An integer number of years to add\n"
+            "date: A dictionary that contains at least a year, month and month-day field. An os/date can be used.  \n"
+            "years-to-add: An integer number of years to add.  \n"
             )},
      {"nth-weekday-of", j_nth_weekday_of_month, JDOC(
             "`(nth-weekday-of year-month nth weekday)`\n"
             "\n" 
             "Compute the nth weekday of a given month and year\n"
             "\n"
-            "year-month: A dictionary that contains at least a year and a month. Can be an os/date.\n"
-            "nth: the index of the weekday in the month, 0 representing the first instance of the day.\n"
-            "weekday: The nth day of the week, 0 -> Sunday, 1 -> Sunday ... 6 -> Saturday\n"
+            "year-month: A dictionary that contains at least a year and a month. Can be an os/date.  \n"
+            "nth: the index of the weekday in the month, 0 representing the first instance of the day.  \n"
+            "weekday: The nth day of the week, 0 -> Sunday, 1 -> Sunday ... 6 -> Saturday  \n"
             )},
     {NULL, NULL, NULL}
 };
